@@ -8,7 +8,9 @@ Install Postman (https://www.getpostman.com/)
 
 Steps: 
 
-Restore DB in SQL Server from the DB folder 
+Restore DB in SQL Server from the DB folder
+
 Open Solution in Visual Studio and build the project 
+
 Execute (F5) to run. Browser will automatically open WEB-API implementation/documentation in swagger ui 
-Open Postman
+
