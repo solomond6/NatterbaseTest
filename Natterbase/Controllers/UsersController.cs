@@ -27,6 +27,7 @@ namespace Natterbase.Controllers
         {
             if (!ModelState.IsValid)
             {
+                LogAudit.Log("Postuser", user.username, 0);
                 return BadRequest(ModelState);
             }
             else
@@ -35,6 +36,8 @@ namespace Natterbase.Controllers
                 user.password = App.CreatePasswordHash(user.password, salt);
                 db.users.Add(user);
                 db.SaveChanges();
+
+                LogAudit.Log("Postuser", user.username, 1);
 
                 return Ok(user);
             }

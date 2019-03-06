@@ -1,17 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="NatterbaseModelStoreContainer" CdmEntityContainer="NatterbaseEntities">
-    <EntitySetMapping Name="audits">
-      <EntityTypeMapping TypeName="NatterbaseModel.audit">
-        <MappingFragment StoreEntitySet="audit">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="action" ColumnName="action" />
-          <ScalarProperty Name="user_id" ColumnName="user_id" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="datecreated" ColumnName="datecreated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="countries">
       <EntityTypeMapping TypeName="NatterbaseModel.country">
         <MappingFragment StoreEntitySet="countries">
@@ -32,6 +21,17 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="audits">
+      <EntityTypeMapping TypeName="NatterbaseModel.audit">
+        <MappingFragment StoreEntitySet="audit">
+          <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="action" ColumnName="action" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

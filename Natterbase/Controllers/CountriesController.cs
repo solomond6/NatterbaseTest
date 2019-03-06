@@ -20,7 +20,7 @@ namespace Natterbase.Controllers
         // GET: api/Countries
         public IQueryable<country> Getcountries()
         {
-
+            LogAudit.Log("Getcountries", "", 0);
             return db.countries;
         }
 
@@ -31,9 +31,11 @@ namespace Natterbase.Controllers
             country country = db.countries.Find(id);
             if (country == null)
             {
+                LogAudit.Log("Getcountry", "", 0);
                 return NotFound();
             }
 
+            LogAudit.Log("Getcountry", "", 1);
             return Ok(country);
         }
 
@@ -45,6 +47,7 @@ namespace Natterbase.Controllers
 
             if (token == null | token == "")
             {
+                LogAudit.Log("Putcountry", "", 0);
                 return Content(HttpStatusCode.BadRequest, new
                 {
                     Succeeded = false,
@@ -57,6 +60,7 @@ namespace Natterbase.Controllers
 
                 if (validateToken == null)
                 {
+                    LogAudit.Log("Putcountry", validateToken, 0);
                     return Content(HttpStatusCode.BadRequest, new
                     {
                         Succeeded = false,
@@ -66,11 +70,13 @@ namespace Natterbase.Controllers
 
                 if (!ModelState.IsValid)
                 {
+                    LogAudit.Log("Putcountry", validateToken, 0);
                     return BadRequest(ModelState);
                 }
 
                 if (id != country.id)
                 {
+                    LogAudit.Log("Putcountry", validateToken, 0);
                     return BadRequest();
                 }
 
@@ -78,16 +84,19 @@ namespace Natterbase.Controllers
 
                 try
                 {
+                    LogAudit.Log("Putcountry", validateToken, 1);
                     db.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!countryExists(id))
                     {
+                        LogAudit.Log("Putcountry", validateToken, 0);
                         return NotFound();
                     }
                     else
                     {
+                        LogAudit.Log("Putcountry", validateToken, 0);
                         return NotFound();
 
                     }
@@ -106,6 +115,7 @@ namespace Natterbase.Controllers
 
             if (token == null | token == "")
             {
+                LogAudit.Log("Postcountry", "", 0);
                 return Content(HttpStatusCode.BadRequest, new
                 {
                     Succeeded = false,
@@ -118,6 +128,7 @@ namespace Natterbase.Controllers
 
                 if (validateToken == null)
                 {
+                    LogAudit.Log("Postcountry", validateToken, 0);
                     return Content(HttpStatusCode.BadRequest, new
                     {
                         Succeeded = false,
@@ -127,13 +138,14 @@ namespace Natterbase.Controllers
 
                 if (!ModelState.IsValid)
                 {
+                    LogAudit.Log("Postcountry", validateToken, 0);
                     return BadRequest(ModelState);
                 }
                 else
                 {
                     db.countries.Add(country);
                     db.SaveChanges();
-
+                    LogAudit.Log("Postcountry", validateToken, 1);
                     return Content(HttpStatusCode.BadRequest, new
                     {
                         Succeeded = true,
@@ -152,6 +164,7 @@ namespace Natterbase.Controllers
 
             if (token == null | token == "")
             {
+                LogAudit.Log("Deletecountry", "", 0);
                 return Content(HttpStatusCode.BadRequest, new
                 {
                     Succeeded = false,
@@ -165,11 +178,15 @@ namespace Natterbase.Controllers
                 country country = db.countries.Find(id);
                 if (country == null)
                 {
+                    LogAudit.Log("Deletecountry", validateToken, 0);
+
                     return NotFound();
                 }
 
                 db.countries.Remove(country);
                 db.SaveChanges();
+
+                LogAudit.Log("Deletecountry", validateToken, 1);
 
                 return Ok(country);
             }

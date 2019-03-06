@@ -25,8 +25,8 @@ namespace Natterbase.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<audit> audits { get; set; }
         public DbSet<country> countries { get; set; }
         public DbSet<user> users { get; set; }
+        public DbSet<audit> audits { get; set; }
     }
 }

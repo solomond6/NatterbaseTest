@@ -254,6 +254,7 @@
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Utility\App.cs" />
+    <Compile Include="Utility\LogAudit.cs" />
     <Compile Include="Utility\TokenManager.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -327,6 +328,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Audit\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

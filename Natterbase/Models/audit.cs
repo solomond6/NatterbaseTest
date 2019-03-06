@@ -16,7 +16,7 @@ namespace Natterbase.Models
     {
         public int id { get; set; }
         public string action { get; set; }
-        public Nullable<int> user_id { get; set; }
+        public string user_id { get; set; }
         public Nullable<byte> status { get; set; }
         public byte[] datecreated { get; set; }
     }

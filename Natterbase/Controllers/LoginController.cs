@@ -27,6 +27,7 @@ namespace Natterbase.Controllers
                     var v = db.users.Where(a => a.username.Equals(u.username) && a.password.Equals(u.password)).FirstOrDefault();
                     if (v != null)
                     {
+                        LogAudit.Log("Login", u.username, 1);
                         return Content(HttpStatusCode.OK, new
                         {
                             Succeeded = true,
@@ -38,6 +39,8 @@ namespace Natterbase.Controllers
                     else
                     {
                         //return NotFound();
+                        LogAudit.Log("Login", u.username, 0);
+
                         return Content(HttpStatusCode.NotFound, new
                         {
                             Succeeded = false,

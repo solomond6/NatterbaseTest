@@ -6,7 +6,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="action" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="user_id" Type="int" />
+    <Property Name="user_id" Type="varchar" MaxLength="100" />
     <Property Name="status" Type="tinyint" />
     <Property Name="datecreated" Type="timestamp" StoreGeneratedPattern="Computed" />
   </EntityType>
